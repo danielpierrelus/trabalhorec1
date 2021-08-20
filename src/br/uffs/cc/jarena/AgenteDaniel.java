@@ -58,6 +58,11 @@ public class AgenteDaniel extends Agente
 	}
 	
 	public void tomouDano(int energiaRestanteInimigo) {
+		if (getEnergia() >= energiaRestanteInimigo){
+			System.out.println(getId());
+		}else{
+			setDirecao(BAIXO);
+		}
 		// Invocado quando o agente está na mesma posição que um agente inimigo
 		// e eles estão batalhando (ambos tomam dano).
 	}
