@@ -48,8 +48,12 @@ public class AgenteDaniel extends Agente
 			divide();
 		}
 	}
-	
+}
 	public void recebeuEnergia() {
+		System.out.println(getY() +"," +getX());
+		String oy= Integer. toString(getY());
+		String ox = Integer.toString(getX());
+		enviaMensagem(ox + "," +oy);
 		// Invocado sempre que o agente recebe energia.
 	}
 	
