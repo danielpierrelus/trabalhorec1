@@ -22,11 +22,11 @@ public class AgenteDaniel extends Agente
 	public void pensa() {
 		cont++;
 		if (cont == 10) {
-			setDirecao(DIREITA);
+			setDirecao(BAIXO);
 		if (cont%10 == 0){
 			if (getId() == cont && getX() >= 10){
 				
-				setDirecao(ESQUERDA);
+				setDirecao(CIMA);
 			}
 			cont++;
 		}
@@ -34,7 +34,7 @@ public class AgenteDaniel extends Agente
 		// que chegamos no final do mapa ou existe algo bloqueando nosso
 		// caminho.
 		if(!podeMoverPara(getDirecao())) {
-			setDirecao(CIMA);
+			setDirecao(DIREITA);
 			System.out.println("VAMOS PARA CIMA");
 			// Como não conseguimos nos mover, vamos escolher uma direção
 			// nova.
@@ -50,9 +50,9 @@ public class AgenteDaniel extends Agente
 	}
 }
 	public void recebeuEnergia() {
-		System.out.println(getY() +"," +getX());
-		String oy= Integer. toString(getY());
-		String ox = Integer.toString(getX());
+		System.out.println(getX() +"," +getY());
+		String oy= Integer. toString(getX());
+		String ox = Integer.toString(getY());
 		enviaMensagem(ox + "," +oy);
 		// Invocado sempre que o agente recebe energia.
 	}
@@ -61,22 +61,28 @@ public class AgenteDaniel extends Agente
 		if (getEnergia() >= energiaRestanteInimigo){
 			System.out.println(getId());
 		}else{
-			setDirecao(BAIXO);
+			setDirecao(ESQUERDA);
 		}
 		// Invocado quando o agente está na mesma posição que um agente inimigo
 		// e eles estão batalhando (ambos tomam dano).
 	}
 	
 	public void ganhouCombate() {
+		System.out.println("Vence O Combate");
 		// Invocado se estamos batalhando e nosso inimigo morreu.
 	}
 	
 	public void recebeuMensagem(String msg) {
+		String[] Coordenadas =msg.split(",");
+		int myX = Integer .parseInt(Coordenadas[0]);
+		int myY = Integer .parseInt(Coordenadas[1]);
+		System.out.println("aqui tem energia");
+		
 		// Invocado sempre que um agente aliado próximo envia uma mensagem.
 	}
 	
 	public String getEquipe() {
 		// Definimos que o nome da equipe do agente é "Fernando".
-		return "Fernando";
+		return "Daniel";
 	}
 }
